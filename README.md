@@ -1,2 +1,3 @@
 # Song-App
-A project by Ryani Durham and
+
+- Kausar Akther and Ryani Durham
