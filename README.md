@@ -1,2 +1,2 @@
 # Song-App
-Ryani Durham
+A project by Ryani Durham and
