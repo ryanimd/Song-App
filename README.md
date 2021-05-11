@@ -1,7 +1,3 @@
 # Song-App
 
-- Kausar Akther
-
-
-
-
+- Kausar Akther and Ryani Durham
