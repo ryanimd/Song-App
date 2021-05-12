@@ -32,7 +32,7 @@ song.put('/:id', (req, res) => {
 })
 
 
-song.debug('/:id', (req, res) => {
+song.delete('/:id', (req, res) => {
     Entry.findByIdAndRemove(req.params.id, (err, deletedEntry) => {
         Entry.find({}, (err, foundEntry) => {
             res.json(foundEntry)
