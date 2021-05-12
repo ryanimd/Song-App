@@ -16,13 +16,16 @@ The version of this app currently uploaded is 1.0.0. In cases where I update the
 
 # Live site link:
 
-This app uses:
+# This app uses:
 
-HTML5
-CSS
-JavaScript ES6
-React
-mongoDB
+* HTML
+* CSS
+* JavaScript
+* React
+* Node.js
+* Mongoose
+* Express
+
 I builted this app with:
 
 VSCode version 1.53.2 Google Chrome version 88.0.4324.192 (Official Build) (arm64) Homebrew 3.0.2 Zsh 5.8 with Oh My Zsh GitHub (online, not desktop) macOS Big Sur version 11.2.1, Apple M1 chip This app is hosted at:
