@@ -58,8 +58,42 @@ class Song extends React.Component {
 
   render = () => {
     return (
-      <div className='container'>
-        <h2>Add a song<h2>
+      <div className="container">
+        <h1>Add a song</h1>
+        <form onSubmit={this.postSong}>
+          <label htmlFor="title">Title</label>
+          <input type="text" id="title" onChange={this.addSong} value={this.state.title}/>
+          <br/>
+          <label htmlFor="artist">Artist</label>
+          <input type="text" id="artist" onChange={this.addSong} value={this.state.artist}/>
+          <br/>
+          <label htmlFor="album">Album</label>
+          <input type="text" id="album" onChange={this.addSong} value={this.state.album}/>
+          <br/>
+          <label htmlFor="image">Image</label>
+          <input type="text" id="image" onChange={this.addSong} value={this.state.image}/>
+          <br/>
+          <button type="submit">Add</button>
+        </form>
+        <h2>Your Song</h2>
+        <ul>
+          {this.state.songs.map((song) => {
+            return (
+              <div className="playlist">
+                <li>
+                  <strong>"{song.title}"</strong>
+                  <br />
+                  <strong>{song.artist}</strong>
+                  <br />
+                  <strong>{song.album}</strong>
+                  <br />
+                  <img src={song.image} alt={song.album}/>
+                  <button value={song._id} onClick={this.deleteSong}>Delete</button>
+                </li>
+              </div>
+            )
+          })}
+        </ul>
       </div>
     )
   }
