@@ -17,6 +17,12 @@ song.post('/', (req, res) => {
     })
 })
 
+//SEED ROUTE 
+song.get('/seed', (req, res) => {
+    Entry.insertMany(songSeen, (err, manySongs) => {
+        res.redirect('/song')
+    })
+})
 
 song.put('/:id', (req, res) => {
     Entry.findByIdAndUpdate(req.params.id, req.body, {new: true},
