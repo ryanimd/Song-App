@@ -80,7 +80,7 @@ class Song extends React.Component {
           {this.state.songs.map((song) => {
             return (
               <div className="playlist">
-                <li>
+                <li key={song._id}>
                   <strong>"{song.title}"</strong>
                   <br />
                   <strong>{song.artist}</strong>
