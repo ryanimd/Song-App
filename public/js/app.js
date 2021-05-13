@@ -58,7 +58,9 @@ class Song extends React.Component {
 
   render = () => {
     return (
-      <h1>Hello</h1>
+      <div className='container'>
+        <h2>Add a song<h2>
+      </div>
     )
   }
 }
