@@ -80,7 +80,10 @@ class Song extends React.Component {
           {this.state.songs.map((song) => {
             return (
               <div className="playlist">
-                <li>
+
+              
+                <li key={song._id}>
+
                   <strong>"{song.title}"</strong>
                   <br />
                   <strong>{song.artist}</strong>
@@ -88,6 +91,7 @@ class Song extends React.Component {
                   <strong>{song.album}</strong>
                   <br />
                   <img src={song.image} alt={song.album}/>
+
 
                   <details>
                     <summary>
@@ -133,6 +137,8 @@ class Song extends React.Component {
                       <input type="submit" value="Update Song" />
                     </form>
                   </details>
+
+
                   <button value={song._id} onClick={this.deleteSong}>Delete</button>
                 </li>
               </div>
