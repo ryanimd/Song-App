@@ -1,6 +1,6 @@
 # Song-App
 
-- Kausar Akther 
+- Kausar Akther
 - Ryani Durham
 
 # Introduction
@@ -15,6 +15,10 @@ The version of this app currently uploaded is 1.0.0. In cases where I update the
 
 
 # Live site link:
+https://peaceful-caverns-65474.herokuapp.com/
+
+# Github Repo:
+https://github.com/ryanimd/Song-App/tree/main
 
 # This app uses:
 
@@ -29,7 +33,5 @@ The version of this app currently uploaded is 1.0.0. In cases where I update the
 I builted this app with:
 
 VSCode version 1.53.2 Google Chrome version 88.0.4324.192 (Official Build) (arm64) Homebrew 3.0.2 Zsh 5.8 with Oh My Zsh GitHub (online, not desktop) macOS Big Sur version 11.2.1, Apple M1 chip This app is hosted at:
-
-[GitHub Repo] [GitHub Hosted Site]
 
 # Future Plans
