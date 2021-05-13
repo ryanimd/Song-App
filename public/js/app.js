@@ -13,7 +13,7 @@ class Song extends React.Component {
     })
   }
 
-  submitSong = (event) => {
+  postSong = (event) => {
     event.preventDefault()
     axios.post('/song', this.state).then((response) => {
       this.setState({
@@ -58,55 +58,91 @@ class Song extends React.Component {
 
   render = () => {
     return (
-        <div>
-          <h1>Welcome to Music World</h1>
-  
-               <form onSubmit={this.postSong}>
+      <div className="container">
+        <h1>Add a song</h1>
+        <form onSubmit={this.postSong}>
+          <label htmlFor="title">Title</label>
+          <input type="text" id="title" onChange={this.addSong} value={this.state.title}/>
+          <br/>
+          <label htmlFor="artist">Artist</label>
+          <input type="text" id="artist" onChange={this.addSong} value={this.state.artist}/>
+          <br/>
+          <label htmlFor="album">Album</label>
+          <input type="text" id="album" onChange={this.addSong} value={this.state.album}/>
+          <br/>
+          <label htmlFor="image">Image</label>
+          <input type="text" id="image" onChange={this.addSong} value={this.state.image}/>
+          <br/>
+          <button type="submit">Add</button>
+        </form>
+        <h2>Your Song</h2>
+        <ul>
+          {this.state.songs.map((song) => {
+            return (
+              <div className="playlist">
+                <li>
+                  <strong>"{song.title}"</strong>
+                  <br />
+                  <strong>{song.artist}</strong>
+                  <br />
+                  <strong>{song.album}</strong>
+                  <br />
+                  <img src={song.image} alt={song.album}/>
 
-               <label htmlFor="title">TITLE:</label>
-                <input type="text" id="title" onChange={this.addSong} /> 
-                <br />
-
-                <label htmlFor="artist">ARTIST:</label>
-                <input type="text" id="artist" onChange={this.addSong} />
-                <br />
-
-                <label htmlFor="title">ALBUM:</label>
-                <input type="text" id="album" onChange={this.addSong}/>
-                <br />
-
-                <label htmlFor="title">IMAGE:</label>
-                <input type="text" id="image" onChange={this.addSong}/>
-
-                <br />
-                <label htmlFor="title">RATING:</label>
-                <input type="text"  id="rating" onChange={this.addSong}/>
-
-
-                <br />
-                <input type="submit"  value="Submit"/>
-            </form>
-
-            <ul>
-                <h2>List of Songs</h2>
-                {this.state.songs.map((song) => {
-                  return (
-                    <li>
-                      {song.title}
+                  <details>
+                    <summary>
+                      Edit this song
+                    </summary>
+                    <form id={song._id} onSubmit={this.updateSong}>
+                      <label htmlFor="title">Title</label>
                       <br />
-                      <img src={song.image} alt={song.title} />
-                    </li>
-                  )
-                })}
-            </ul>
+                      <input 
+                          type="text" 
+                          id="title" 
+                          onChange={this.addSong}
+                          defaultValue={song.title}
+                           /> 
 
-        </div>
+                      <label htmlFor="artist">Artist</label>
+                      <br />
+                      <input 
+                          type="text"
+                          id="artist"
+                          onChange={this.addSong}
+                          defaultValue={song.artist}
+                      />
+
+                      <label htmlFor="album"> Album</label>
+                      <br />
+                      <input 
+                          type="text" 
+                          id="album"
+                          onChange={this.addSong}
+                          defaultValue={song.album}
+                      />
+
+                      <label htmlFor="image"> Image</label>
+                      <br /> 
+                      <input 
+                          type="text" 
+                          id="image"
+                          onchange={this.addSong}
+                          defaultValue={song.image}
+                      />
+
+                      <input type="submit" value="Update Song" />
+                    </form>
+                  </details>
+                  <button value={song._id} onClick={this.deleteSong}>Delete</button>
+                </li>
+              </div>
+            )
+          })}
+        </ul>
+      </div>
     )
   }
 }
-
-
-
 
 ReactDOM.render(
   <Song></Song>,
