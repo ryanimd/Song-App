@@ -30,7 +30,7 @@ song.put('/:id', (req, res) => {
             if(err){
                 res.send(err)
             }else{
-                Entry.findByIdAndUpdate({}, (err, foundEntry) => {
+                Entry.find({}, (err, foundEntry) => {
                     res.json(foundEntry)
                 })
             }

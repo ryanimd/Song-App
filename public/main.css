@@ -10,4 +10,9 @@ ul {
 
 .playlist {
   background: rgb(19,19,19);
+  padding: 10px;;
+}
+
+details:hover{
+  cursor: pointer;
 }
