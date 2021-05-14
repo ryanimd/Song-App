@@ -17,7 +17,7 @@ class Song extends React.Component {
   }
 
   //SUBMIT
-  submitSong = (event) => {
+  postSong = (event) => {
     event.preventDefault()
     axios.post('/song', this.state).then((response) => {
       this.setState({
@@ -98,7 +98,7 @@ class Song extends React.Component {
 
 
         <h2>Add a song</h2>
-        <form onSubmit={this.submitSong}>
+        <form onSubmit={this.postSong}>
           <label htmlFor="title">Title</label>
           <br />
           <input type="text"
@@ -198,6 +198,10 @@ class Song extends React.Component {
             )
           })}
         </ul>
+
+        <div className="footer">
+         
+        </div>
       </div>
     )
   }
