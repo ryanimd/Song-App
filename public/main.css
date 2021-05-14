@@ -1,7 +1,6 @@
 body {
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(6,45,134,1) 44%, rgba(11,123,145,1) 100%);
-  color: white;
 }
 
 ul {
@@ -10,4 +9,9 @@ ul {
 
 .playlist {
   background: rgb(19,19,19);
+  padding: 10px;;
+}
+
+details:hover{
+  cursor: pointer;
 }
