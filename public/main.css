@@ -26,3 +26,15 @@ ul {
 details:hover{
   cursor: pointer;
 }
+
+/* .navbar{
+  background-color:black;
+    color: white;
+    margin: 0;  
+    text-align: right;
+} */
+
+.footer{
+  display: flex;
+  justify-content:  space-between;
+}

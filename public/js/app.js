@@ -146,7 +146,12 @@ class Song extends React.Component {
           })}
         </ul>
         <div className="footer">
-        
+          <a href="#home">Home</a>
+          <a href="#contact">Contact</a>
+          <a href="#" target="_blank"><i className="fab fa-facebook fa-3x fa-fw"></i></a>
+          <a href="#" target="_blank"><i className="fab fa-instagram-square fa-3x fa-fw"></i></a>
+
+
     
         </div>
       </div>
