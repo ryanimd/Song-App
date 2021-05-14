@@ -7,13 +7,17 @@ class Song extends React.Component {
     songs: []
   }
 
+
+
+
+
+
   addSong = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value
-    })
+    this.setState({ [event.target.id]: event.target.value})
   }
 
-  postSong = (event) => {
+  //SUBMIT
+  submitSong = (event) => {
     event.preventDefault()
     axios.post('/song', this.state).then((response) => {
       this.setState({
@@ -26,65 +30,117 @@ class Song extends React.Component {
     })
   }
 
-  updateSong = (event) => {
-    event.preventDefault()
-    const id = event.target.id
-    axios.put('/song/' + id, this.state).then((response) => {
+    //UPDATE
+    updateSong = (event) => {
+      event.preventDefault()
+      const id = event.target.id
+      axios
+        .put('/song/' + id, this.state)
+        .then((response) => {
+          this.setState({
+            songs: response.data,
+            title: '',
+            artist: '',
+            album: '',
+            image: ''
+          })
+        })
+      }
+
+    //DELETE
+    deleteSong = (event) => {
+      axios
+        .delete('/song/' + event.target.value)
+        .then(response => this.setState({songs: response.data}))
+    }
+
+
+    updateStateOnSubmit = (event) => {
       this.setState({
-        songs: response.data,
-        title: '',
-        artist: '',
-        album: '',
-        image: ''
+        title: event.target.nextSibling.firstChild.nextSibling.nextSibling.value,
+        artist: event.target.nextSibling.firstChild.nextSibling.nextSibling.value,
+        album: event.target.nextSibling.firstChild.nextSibling.nextSibling.value,
+        image:
+          event.target.nextSibling.firstChild.nextSibling.nextSibling.nextSibling
+            .nextSibling.nextSibling.value,
+      })
+    }
+
+   //DID MOUNT
+   componentDidMount = () => {
+    axios
+      .get('/song')
+      .then(response => {
+        this.setState({
+          songs: response.data
       })
     })
   }
 
-  deleteSong = (event) => {
-    axios.delete('/song/' + event.target.value).then(response => {
-      this.setState({
-        songs: response.data,
-      })
-    })
-  }
-
-  componentDidMount = () => {
-    axios.get('/song').then(response => {
-      this.setState({
-        songs: response.data
-      })
-    })
-  }
+   
 
   render = () => {
     return (
       <div className="container">
-        <h1>Add a song</h1>
-        <form onSubmit={this.postSong}>
+        <nav>
+              <div class='navbar'>
+                <h1>Music World!</h1>
+                <ul>
+                  <li>
+                    <button>Sign In</button>
+                  </li>
+                  <li>
+                    <button>Sign Up</button>
+                  </li>
+                </ul>
+              </div>
+        </nav>
+
+
+        <h2>Add a song</h2>
+        <form onSubmit={this.submitSong}>
           <label htmlFor="title">Title</label>
-          <input type="text" id="title" onChange={this.addSong} value={this.state.title}/>
+          <br />
+          <input type="text"
+          id="title"
+          onChange={this.addSong}
+          value={this.state.title}/>
           <br/>
+
           <label htmlFor="artist">Artist</label>
-          <input type="text" id="artist" onChange={this.addSong} value={this.state.artist}/>
+          <input type="text"
+          id="artist"
+          onChange={this.addSong}
+          value={this.state.artist}/>
           <br/>
+
           <label htmlFor="album">Album</label>
-          <input type="text" id="album" onChange={this.addSong} value={this.state.album}/>
+          <input type="text"
+          id="album"
+          onChange={this.addSong}
+          value={this.state.album}/>
+          <br/>
+          
           <br/>
           <label htmlFor="image">Image</label>
-          <input type="text" id="image" onChange={this.addSong} value={this.state.image}/>
+          <input type="text"
+          id="image"
+          onChange={this.addSong}
+          value={this.state.image}/>
           <br/>
-          <button type="submit">Add</button>
+        
+          <input type="submit" value="Create Song"/>
         </form>
+
+
         <h2>Your Song</h2>
         <ul>
           {this.state.songs.map((song) => {
             return (
-              <div className="playlist">
-
               
                 <li key={song._id}>
 
-                  <strong>"{song.title}"</strong>
+                  <strong>{song.title}</strong>
                   <br />
                   <strong>{song.artist}</strong>
                   <br />
@@ -92,9 +148,8 @@ class Song extends React.Component {
                   <br />
                   <img src={song.image} alt={song.album}/>
 
-
                   <details>
-                    <summary>
+                    <summary onClick={this.updateStateOnSubmit}>
                       Edit this song
                     </summary>
                     <form id={song._id} onSubmit={this.updateSong}>
@@ -130,18 +185,16 @@ class Song extends React.Component {
                       <input 
                           type="text" 
                           id="image"
-                          onchange={this.addSong}
+                          onChange={this.addSong}
                           defaultValue={song.image}
                       />
-
+                      <br /> 
                       <input type="submit" value="Update Song" />
                     </form>
                   </details>
-
-
                   <button value={song._id} onClick={this.deleteSong}>Delete</button>
                 </li>
-              </div>
+            
             )
           })}
         </ul>
