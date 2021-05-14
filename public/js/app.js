@@ -21,7 +21,7 @@ class Song extends React.Component {
         title: '',
         artist: '',
         album: '',
-        image: ''
+        image: '',
       })
     })
   }
@@ -29,13 +29,14 @@ class Song extends React.Component {
   updateSong = (event) => {
     event.preventDefault()
     const id = event.target.id
+    // console.log('/song/' + id, this.state);
     axios.put('/song/' + id, this.state).then((response) => {
       this.setState({
         songs: response.data,
         title: '',
         artist: '',
         album: '',
-        image: ''
+        image: '',
       })
     })
   }
@@ -58,74 +59,75 @@ class Song extends React.Component {
 
   render = () => {
     return (
-      <div className="container">
-        <h1>Add a song</h1>
+      <div>
+        <h1 className="text-white">Playlist</h1>
+        <h2 className="text-white">Add a song</h2>
         <form onSubmit={this.postSong}>
-          <label htmlFor="title">Title</label>
-          <input type="text" id="title" onChange={this.addSong} value={this.state.title}/>
+          <label htmlFor="title" className="form-label" className="text-white">Title</label>
+          <input className="form-control" type="text" id="title" onChange={this.addSong} value={this.state.title}/>
           <br/>
-          <label htmlFor="artist">Artist</label>
-          <input type="text" id="artist" onChange={this.addSong} value={this.state.artist}/>
+          <label className="form-label" className="text-white" htmlFor="artist">Artist</label>
+          <input className="form-control" type="text" id="artist" onChange={this.addSong} value={this.state.artist}/>
           <br/>
-          <label htmlFor="album">Album</label>
-          <input type="text" id="album" onChange={this.addSong} value={this.state.album}/>
+          <label className="form-label" className="text-white" htmlFor="album">Album</label>
+          <input className="form-control" type="text" id="album" onChange={this.addSong} value={this.state.album}/>
           <br/>
-          <label htmlFor="image">Image</label>
-          <input type="text" id="image" onChange={this.addSong} value={this.state.image}/>
+          <label className="form-label" className="text-white" htmlFor="image">Image</label>
+          <input className="form-control" type="text" id="image" onChange={this.addSong} value={this.state.image}/>
           <br/>
           <button type="submit">Add</button>
         </form>
-        <h2>Your Songs</h2>
+        <h2 className="text-white">Your Songs</h2>
         <ul>
           {this.state.songs.map((song) => {
             return (
               <div className="playlist">
                 <li key={song._id}>
-                  <strong>"{song.title}"</strong>
+                  <strong className="text-white">{song.title}</strong>
                   <br />
-                  {song.artist}
+                  <p className="text-white">{song.artist}</p>
                   <br />
-                  {song.album}
+                  <p className="text-white">{song.album}</p>
                   <br />
                   <img src={song.image} alt={song.album}/>
                   <details>
-                    <summary>
+                    <summary className="text-white">
                       Edit this song
                     </summary>
                     <form id={song._id} onSubmit={this.updateSong}>
-                      <label htmlFor="title">Title</label>
-                      <input
+                      <label className="form-label" className="text-white" htmlFor="title">Title</label>
+                      <input className="form-control"
                           type="text"
                           id="title"
-                          onChange={this.postSong}
+                          onChange={this.addSong}
                           defaultValue={song.title}
                            />
                       <br />
-                      <label htmlFor="artist">Artist</label>
-                      <input
+                      <label className="form-label" className="text-white" htmlFor="artist">Artist</label>
+                      <input className="form-control"
                           type="text"
                           id="artist"
-                          onChange={this.postSong}
+                          onChange={this.addSong}
                           defaultValue={song.artist}
                       />
                       <br />
-                      <label htmlFor="album"> Album</label>
-                      <input
+                      <label className="form-label" className="text-white" htmlFor="album"> Album</label>
+                      <input className="form-control"
                           type="text"
                           id="album"
-                          onChange={this.postSong}
+                          onChange={this.addSong}
                           defaultValue={song.album}
                       />
                       <br />
-                      <label htmlFor="image"> Image</label>
-                      <input
+                      <label className="form-label" className="text-white" htmlFor="image"> Image</label>
+                      <input className="form-control"
                           type="text"
                           id="image"
-                          onChange={this.postSong}
+                          onChange={this.addSong}
                           defaultValue={song.image}
                       />
                       <br />
-                      <button type="submit" onClick={this.updateSong} value={song._id}>Update Song</button>
+                      <button type="submit" value={song._id}>Update Song</button>
                     </form>
                   </details>
                   <button value={song._id} onClick={this.deleteSong}>Delete</button>
