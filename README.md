@@ -18,7 +18,7 @@ The version of this app currently uploaded is 1.0.0. In cases where I update the
 https://peaceful-caverns-65474.herokuapp.com/
 
 # Github Repo:
-https://github.com/ryanimd/Song-App/tree/main
+https://github.com/ryanimd/Song-App
 
 # This app uses:
 
