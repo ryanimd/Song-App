@@ -7,16 +7,12 @@ class Song extends React.Component {
     songs: []
   }
 
-
-
-
-
-
   addSong = (event) => {
-    this.setState({ [event.target.id]: event.target.value})
+    this.setState({
+      [event.target.id]: event.target.value
+    })
   }
 
-  //SUBMIT
   postSong = (event) => {
     event.preventDefault()
     axios.post('/song', this.state).then((response) => {
@@ -25,183 +21,134 @@ class Song extends React.Component {
         title: '',
         artist: '',
         album: '',
-        image: ''
+        image: '',
       })
     })
   }
 
-    //UPDATE
-    updateSong = (event) => {
-      event.preventDefault()
-      const id = event.target.id
-      axios
-        .put('/song/' + id, this.state)
-        .then((response) => {
-          this.setState({
-            songs: response.data,
-            title: '',
-            artist: '',
-            album: '',
-            image: ''
-          })
-        })
-      }
-
-    //DELETE
-    deleteSong = (event) => {
-      axios
-        .delete('/song/' + event.target.value)
-        .then(response => this.setState({songs: response.data}))
-    }
-
-
-    updateStateOnSubmit = (event) => {
+  updateSong = (event) => {
+    event.preventDefault()
+    const id = event.target.id
+    // console.log('/song/' + id, this.state);
+    axios.put('/song/' + id, this.state).then((response) => {
       this.setState({
-        title: event.target.nextSibling.firstChild.nextSibling.nextSibling.value,
-        artist: event.target.nextSibling.firstChild.nextSibling.nextSibling.value,
-        album: event.target.nextSibling.firstChild.nextSibling.nextSibling.value,
-        image:
-          event.target.nextSibling.firstChild.nextSibling.nextSibling.nextSibling
-            .nextSibling.nextSibling.value,
-      })
-    }
-
-   //DID MOUNT
-   componentDidMount = () => {
-    axios
-      .get('/song')
-      .then(response => {
-        this.setState({
-          songs: response.data
+        songs: response.data,
+        title: '',
+        artist: '',
+        album: '',
+        image: '',
       })
     })
   }
 
-   
+  deleteSong = (event) => {
+    axios.delete('/song/' + event.target.value).then(response => {
+      this.setState({
+        songs: response.data,
+      })
+    })
+  }
+
+  componentDidMount = () => {
+    axios.get('/song').then(response => {
+      this.setState({
+        songs: response.data
+      })
+    })
+  }
 
   render = () => {
     return (
-      <div className="container">
-        <nav>
-              <div class='navbar'>
-                <h1>Music World!</h1>
-                <ul>
-                  <li>
-                    <button>Sign In</button>
-                  </li>
-                  <li>
-                    <button>Sign Up</button>
-                  </li>
-                </ul>
-              </div>
-        </nav>
-
-
-        <h2>Add a song</h2>
+      <div>
+      <div class='navbar'>
+            <h1>Music World!</h1>
+            <ul>
+              <li>
+                <button>Sign In</button>
+              </li>
+              <li>
+                <button>Sign Up</button>
+              </li>
+            </ul>
+          </div>
+        <h1 className="text-white">Playlist</h1>
+        <h2 className="text-white">Add a song</h2>
         <form onSubmit={this.postSong}>
-          <label htmlFor="title">Title</label>
-          <br />
-          <input type="text"
-          id="title"
-          onChange={this.addSong}
-          value={this.state.title}/>
+          <label htmlFor="title" className="form-label" className="text-white">Title</label>
+          <input className="form-control" type="text" id="title" onChange={this.addSong} value={this.state.title}/>
           <br/>
-
-          <label htmlFor="artist">Artist</label>
-          <input type="text"
-          id="artist"
-          onChange={this.addSong}
-          value={this.state.artist}/>
+          <label className="form-label" className="text-white" htmlFor="artist">Artist</label>
+          <input className="form-control" type="text" id="artist" onChange={this.addSong} value={this.state.artist}/>
           <br/>
-
-          <label htmlFor="album">Album</label>
-          <input type="text"
-          id="album"
-          onChange={this.addSong}
-          value={this.state.album}/>
+          <label className="form-label" className="text-white" htmlFor="album">Album</label>
+          <input className="form-control" type="text" id="album" onChange={this.addSong} value={this.state.album}/>
           <br/>
-          
+          <label className="form-label" className="text-white" htmlFor="image">Image</label>
+          <input className="form-control" type="text" id="image" onChange={this.addSong} value={this.state.image}/>
           <br/>
-          <label htmlFor="image">Image</label>
-          <input type="text"
-          id="image"
-          onChange={this.addSong}
-          value={this.state.image}/>
-          <br/>
-        
-          <input type="submit" value="Create Song"/>
+          <button type="submit">Add</button>
         </form>
 
-
-        <h2>Your Song</h2>
+        <h2 className="text-white">Your Songs</h2>
+        
         <ul>
           {this.state.songs.map((song) => {
             return (
-              
+              <div className="playlist">
                 <li key={song._id}>
-
-                  <strong>{song.title}</strong>
+                  <em className="text-white">{song.title}</em>
                   <br />
-                  <strong>{song.artist}</strong>
+                  <p className="text-white">{song.artist}</p>
                   <br />
-                  <strong>{song.album}</strong>
+                  <p className="text-white">{song.album}</p>
                   <br />
                   <img src={song.image} alt={song.album}/>
-
                   <details>
-                    <summary onClick={this.updateStateOnSubmit}>
+                    <summary className="text-white">
                       Edit this song
                     </summary>
                     <form id={song._id} onSubmit={this.updateSong}>
-                      <label htmlFor="title">Title</label>
-                      <br />
-                      <input 
-                          type="text" 
-                          id="title" 
+                      <label className="form-label" className="text-white" htmlFor="title">Title</label>
+                      <input className="form-control"
+                          type="text"
+                          id="title"
                           onChange={this.addSong}
                           defaultValue={song.title}
-                           /> 
-
-                      <label htmlFor="artist">Artist</label>
+                           />
                       <br />
-                      <input 
+                      <label className="form-label" className="text-white" htmlFor="artist">Artist</label>
+                      <input className="form-control"
                           type="text"
                           id="artist"
                           onChange={this.addSong}
                           defaultValue={song.artist}
                       />
-
-                      <label htmlFor="album"> Album</label>
                       <br />
-                      <input 
-                          type="text" 
+                      <label className="form-label" className="text-white" htmlFor="album"> Album</label>
+                      <input className="form-control"
+                          type="text"
                           id="album"
                           onChange={this.addSong}
                           defaultValue={song.album}
                       />
-
-                      <label htmlFor="image"> Image</label>
-                      <br /> 
-                      <input 
-                          type="text" 
+                      <br />
+                      <label className="form-label" className="text-white" htmlFor="image"> Image</label>
+                      <input className="form-control"
+                          type="text"
                           id="image"
                           onChange={this.addSong}
                           defaultValue={song.image}
                       />
-                      <br /> 
-                      <input type="submit" value="Update Song" />
+                      <br />
+                      <button type="submit" value={song._id}>Update Song</button>
                     </form>
                   </details>
                   <button value={song._id} onClick={this.deleteSong}>Delete</button>
                 </li>
-            
+              </div>
             )
           })}
         </ul>
-
-        <div className="footer">
-         
-        </div>
       </div>
     )
   }
