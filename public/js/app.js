@@ -77,13 +77,15 @@ class Song extends React.Component {
           <br/>
           <button type="submit">Add</button>
         </form>
+
         <h2 className="text-white">Your Songs</h2>
+        
         <ul>
           {this.state.songs.map((song) => {
             return (
               <div className="playlist">
                 <li key={song._id}>
-                  <strong className="text-white">{song.title}</strong>
+                  <em className="text-white">{song.title}</em>
                   <br />
                   <p className="text-white">{song.artist}</p>
                   <br />
