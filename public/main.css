@@ -3,6 +3,15 @@ body {
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(6,45,134,1) 44%, rgba(11,123,145,1) 100%);
 }
 
+
+/* .container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+h2{
+  text-align: center; */
+/* } */
 ul {
   list-style: none;
 }
