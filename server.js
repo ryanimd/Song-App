@@ -12,6 +12,8 @@ const MONGODB_URI = process.env.MONGODB_URI
 
 app.use(express.static('public'))
 app.use(express.json())
+const landingController = require('./controllers/landing_controller.js')
+app.use('/landing', landingController)
 const songController = require('./controllers/songs_controllers.js')
 app.use('/song', songController)
 

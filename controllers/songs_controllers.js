@@ -25,12 +25,13 @@ song.get('/seed', (req, res) => {
 })
 
 song.put('/:id', (req, res) => {
+  // console.log('hello');
     Entry.findByIdAndUpdate(req.params.id, req.body, {new: true},
         (err, updateEntry) => {
             if(err){
                 res.send(err)
             }else{
-                Entry.findByIdAndUpdate({}, (err, foundEntry) => {
+                Entry.find({}, (err, foundEntry) => {
                     res.json(foundEntry)
                 })
             }

@@ -60,17 +60,6 @@ class Song extends React.Component {
   render = () => {
     return (
       <div>
-      <div class='navbar'>
-            <h1>Music World!</h1>
-            <ul>
-              <li>
-                <button>Sign In</button>
-              </li>
-              <li>
-                <button>Sign Up</button>
-              </li>
-            </ul>
-          </div>
         <h1 className="text-white">Playlist</h1>
         <h2 className="text-white">Add a song</h2>
         <form onSubmit={this.postSong}>
