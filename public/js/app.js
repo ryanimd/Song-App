@@ -61,14 +61,17 @@ class Song extends React.Component {
     return (
       <div>
       <div className='navbar'>
-        <h1>Music World</h1>
-        <ul>
-          <li>Sign In</li>
-          <li>Sign Up</li>
+        <h1 className="text-white">Music World</h1>
+        <ul className="nav nav-tabs justify-content-end">
+          <li className="nav-item">
+            <a className="nav-link active" href="#">Sign Up</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link active" href="#">Log In</a>
+          </li>
         </ul>
       </div>
-        <h1 className="text-white">Playlist</h1>
-        <h2 className="text-white">Add a song</h2>
+        <h2 className="text-white">Add a song to your playlist</h2>
         <form onSubmit={this.postSong}>
           <label htmlFor="title" className="form-label" className="text-white">Title</label>
           <input className="form-control" type="text" id="title" onChange={this.addSong} value={this.state.title}/>
@@ -82,11 +85,11 @@ class Song extends React.Component {
           <label className="form-label" className="text-white" htmlFor="image">Image</label>
           <input className="form-control" type="text" id="image" onChange={this.addSong} value={this.state.image}/>
           <br/>
-          <button type="submit">Add</button>
+          <button className="btn btn-dark" type="submit">Add</button>
         </form>
 
         <h2 className="text-white">Your Songs</h2>
-        
+
         <ul>
           {this.state.songs.map((song) => {
             return (
@@ -99,6 +102,8 @@ class Song extends React.Component {
                   <p className="text-white">{song.album}</p>
                   <br />
                   <img src={song.image} alt={song.album}/>
+                  <audio controls muted>
+                  </audio>
                   <details>
                     <summary className="text-white">
                       Edit this song
@@ -139,15 +144,15 @@ class Song extends React.Component {
                       <button type="submit" value={song._id}>Update Song</button>
                     </form>
                   </details>
-                  <button value={song._id} onClick={this.deleteSong}>Delete</button>
+                  <button className="btn btn-danger" value={song._id} onClick={this.deleteSong}>Delete</button>
                 </li>
               </div>
             )
           })}
         </ul>
         <div className="footer">
-        
-    
+
+
         </div>
       </div>
     )
