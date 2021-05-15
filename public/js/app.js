@@ -63,8 +63,8 @@ class Song extends React.Component {
       <div className='navbar'>
         <h1>Music World</h1>
         <ul>
-          <li>Sign In</li>
-          <li>Sign Up</li>
+          <li><a href='#'>Sign In </a></li>
+          <li><a href='#'>Sign Up</a></li>
         </ul>
       </div>
         <h1 className="text-white">Playlist</h1>
@@ -139,7 +139,8 @@ class Song extends React.Component {
                       <button type="submit" value={song._id}>Update Song</button>
                     </form>
                   </details>
-                  <button value={song._id} onClick={this.deleteSong}>Delete</button>
+                  <br />
+                  <button  className='deleteButton' value={song._id} onClick={this.deleteSong}>Delete</button>
                 </li>
               </div>
             )
