@@ -1,6 +1,7 @@
 const express = require('express')
 const song = express.Router()
 const Entry = require('../models/song.js')
+const songSeed = require('../models/song_seed.js')
 
 
 song.get('/', (req, res) => {
@@ -19,7 +20,7 @@ song.post('/', (req, res) => {
 
 //SEED ROUTE 
 song.get('/seed', (req, res) => {
-    Entry.insertMany(songSeen, (err, manySongs) => {
+    Entry.insertMany(songSeed, (err, manySongs) => {
         res.redirect('/song')
     })
 })
