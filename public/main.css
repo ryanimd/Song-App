@@ -39,3 +39,33 @@ audio {
 details:hover{
   cursor: pointer;
 }
+
+/* .navbar{
+  background-color:black;
+    color: white;
+    margin: 0;  
+    text-align: right;
+} */
+
+
+.navbar{
+  display: block;
+  /* width: 100%; */
+  background-color: black;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+
+
+}
+
+.deleteButton{
+  text-align: center;
+}
+
+.footer{
+  display: flex;
+  justify-content:  space-between;
+}

@@ -17,7 +17,9 @@ app.use(express.json())
 const songController = require('./controllers/songs_controllers.js')
 app.use('/song', songController)
 
-
+// -----------
+const userController = require('./controllers/users_controller.js')
+app.use('/users', userController)
 //LISTENER
 app.listen(PORT, () => {
     console.log('listening on Port', PORT)
