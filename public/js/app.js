@@ -88,7 +88,7 @@ class Song extends React.Component {
           <button className="btn btn-dark" type="submit">Add</button>
         </form>
 
-        <h2 className="text-white">Your Songs</h2>
+        <h2 className="text-white">Your Playlist</h2>
 
         <ul>
           {this.state.songs.map((song) => {
@@ -99,11 +99,11 @@ class Song extends React.Component {
                   <br />
                   <p className="text-white">{song.artist}</p>
                   <br />
-                  <p className="text-white">{song.album}</p>
+                  <strong className="text-white">{song.album}</strong>
                   <br />
                   <img src={song.image} alt={song.album}/>
-                  <audio controls muted>
-                  </audio>
+                  {/* <audio controls muted>
+                  </audio> */}
                   <details>
                     <summary className="text-white">
                       Edit this song

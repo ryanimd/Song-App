@@ -4,7 +4,7 @@
 - Ryani Durham
 
 # Introduction
-This app is a deliverable for an assignment in for my General Assembly curriculum for using the MER stack: HTML, CSS, JavaScript, React, Node.js, Mongoose and Express. The goal is to create a ...
+This app is a deliverable for an assignment in for my General Assembly curriculum for using the MER stack: HTML, CSS, JavaScript, React, Node.js, Mongoose and Express. We created a full CRUD app that allows the user to add, edit, and delete songs from a playlist.
 
 See Appendix A: Assignment from General Assembly for more information.
 
